@@ -4,9 +4,7 @@ const Book = require('../book');
 const { format } = require('date-fns');
 const curd = new Date();
 const today = format(curd, 'yyyy-MM-dd');
-router.get('/', (req, res) => {
-    res.send("Welcome to book store");
-});
+
 router.post('/books', async (req, res) => {
     try {
         console.log("debug :", req.body);
@@ -22,7 +20,8 @@ router.post('/books', async (req, res) => {
         console.error(err);
     }
 });
-module.exports = router;
+
+
 router.get('/viewbooks', async (req, res) => {
     try {
         const books = await Book.find();
@@ -31,3 +30,8 @@ router.get('/viewbooks', async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+
+
+
+
+module.exports = router;
